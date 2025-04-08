@@ -1,0 +1,26 @@
+services:
+    telegraf:
+        image: telegraf
+        runtime: nvidia
+        container_name: telegraf
+        restart: always
+        privileged: true
+        # Update the devices to match the GPU configuration of the host
+        devices:
+          - /dev/nvidiactl:/dev/nvidiactl
+          - /dev/nvidia0:/dev/nvidia0
+          - /dev/nvidia1:/dev/nvidia1
+          - /dev/nvidia2:/dev/nvidia2
+          - /dev/nvidia3:/dev/nvidia3
+        env_file:
+            - telegraf.env
+        volumes:
+            - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+            - /usr/bin/nvidia-smi:/usr/bin/nvidia-smi:ro
+            - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so:ro
+            - /:/hostfs:ro
+        network_mode: "host"
+        ports:
+            - '8125:8125'
+        environment:
+            - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libnvidia-ml.so

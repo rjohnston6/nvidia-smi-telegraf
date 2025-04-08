@@ -19,7 +19,6 @@ services:
             - /usr/bin/nvidia-smi:/usr/bin/nvidia-smi:ro
             - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so:ro
             - /:/hostfs:ro
-        network_mode: "host"
         ports:
             - '8125:8125'
         environment:

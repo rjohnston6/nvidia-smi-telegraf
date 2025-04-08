@@ -43,12 +43,12 @@ Review the configuration of the `telegraf.conf` limited chnages are required to 
 Locate the following snippits for any changes that may be required.
 
 1. Updated Host Name
-   ```ini
+   ```TOML
    ## Override default hostname, if empty use os.Hostname()
    hostname = "ai-11"
    ```
 2. Update InfluxDBv2 listening if needed.
-   ```ini
+   ```TOML
    [[outputs.influxdb_v2]]
      ## The URLs of the InfluxDB cluster nodes.
      ##
@@ -58,7 +58,7 @@ Locate the following snippits for any changes that may be required.
      urls = ["http://${INFLUXDB_URL}:8086"]
    ```
 3. Update vLLM Promothus Port if needed.
-   ```ini
+   ```TOML
    [[inputs.prometheus]]
      urls = ["http://${VLLM_API_ADDRESS}:8000"]
      metric_version = 2
@@ -105,9 +105,8 @@ docker compose down
 Once deployed data will be collected from the underlying host and exported to a InfluxDBv2 instance. Refer to the repo [rjohnston6/ai-infra-monitoring][1] for additional steps to visualize statistics in Grafana.
 
 <!-- Roadmap -->
-## Roadmap
-- [ ] 
-- [ ] 
+<!-- ## Roadmap
+- [ ]  -->
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [1]: https://github.com/rjohnston6/ai-infra-monitoring

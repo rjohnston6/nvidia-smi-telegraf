@@ -2,14 +2,24 @@
 # 🚧 WORK IN PROGRESS 🚧
 # Nvidia-SMI Telegraf Container
 To aid in testing and experimenting with collecting statistics from an accelerated computing node with Nvidia GPUs. This is part of a project to show case visability of nodes visualized using a TIG stack. Refer to the repo [rjohnston6/ai-infra-monitoring][1] to setup a basic TIG stack to export data from each container deployed for monitoring multiple nodes.
-
+ 
 <!-- Getting Started -->
 ## Getting Started
 To simplify the deployment the use of a Compose is used to minimize the installation of software on the compute node. As a container runtime likely docker is typically found in a accelerated compute deployment limited installation is needed.
 
 The container is tested on the following server configuration.
 
-<!-- Add test configuration -->
+### Tested Configuration
+| Service | Version |
+| :-- | --: |
+| NVIDIA-SMI | 550.144.03 |
+| NVML version | 550.144 |
+| DRIVER version | 550.144.03 |
+| CUDA Version | 12.4 |
+| Docker Engine - Community Version | 28.0.2 |
+
+
+- NVIDIA L40S
 
 ### Requirements
 - A container runtime of either Docker or Podman with the docker-compose utility installed.
@@ -74,6 +84,12 @@ devices:
 ```
 
 By ensuring all GPUs are mapped statistics can be properly accessed from the container to the underlying host.
+
+#### Step 4: Deploy Container
+Deploy the container using compose.
+```bash
+docker compose -f compose.yaml up -d
+```
 
 ## Conclusion
 

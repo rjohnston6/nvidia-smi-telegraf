@@ -43,12 +43,12 @@ Review the configuration of the `telegraf.conf` limited chnages are required to 
 Locate the following snippits for any changes that may be required.
 
 1. Updated Host Name
-   ```TOML
+   ```toml
    ## Override default hostname, if empty use os.Hostname()
    hostname = "ai-11"
    ```
 2. Update InfluxDBv2 listening if needed.
-   ```TOML
+   ```toml
    [[outputs.influxdb_v2]]
      ## The URLs of the InfluxDB cluster nodes.
      ##
@@ -58,7 +58,7 @@ Locate the following snippits for any changes that may be required.
      urls = ["http://${INFLUXDB_URL}:8086"]
    ```
 3. Update vLLM Promothus Port if needed.
-   ```TOML
+   ```toml
    [[inputs.prometheus]]
      urls = ["http://${VLLM_API_ADDRESS}:8000"]
      metric_version = 2
